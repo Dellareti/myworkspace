@@ -1,7 +1,9 @@
 # Skills
 
-Catálogo completo de skills do Claude Code (cada uma numa pasta com `SKILL.md`).
-**72 skills** versionadas aqui — os arquivos reais estão no repo (não só symlinks).
+Catálogo de skills do Claude Code (cada uma numa pasta com `SKILL.md`).
+Arquivos reais versionados no repo (não só symlinks):
+- **72 skills standalone** (raiz de `skills/`) — custom + importadas via `npx skills`/clones
+- **79 skills do arsenal wshobson** em `skills/wshobson/<plugin>/` — vêm dos 24 plugins instalados
 
 ## Como usar numa máquina
 Copiar/symlinkar todas pro Claude Code:
@@ -50,3 +52,18 @@ Agrupadas por domínio:
 > As importadas vieram via `npx skills add` / clones (ver `setup/claude-setup-manifest.md` §8).
 > Aqui ficam vendorizadas (cópia dos arquivos) para backup e replicação offline; para atualizar
 > à versão upstream, reinstalar pela fonte.
+
+## Skills do arsenal wshobson — `skills/wshobson/<plugin>/` (79 skills)
+Vêm dentro dos 24 plugins do marketplace `claude-code-workflows` (ver `setup/` §8a).
+Organizadas por plugin para preservar proveniência e evitar colisão de nomes.
+
+| Domínio | Plugins (nº skills) |
+|---------|---------------------|
+| Backend/API | backend-development (9), api-scaffolding (1), database-design (1) |
+| Frontend/UI | frontend-mobile-development (4), ui-design (9) |
+| Linguagens | python-development (16), javascript-typescript (4), systems-programming (3) |
+| DevOps/Cloud | cloud-infrastructure (8), kubernetes-operations (4), cicd-automation (4), observability-monitoring (4), incident-response (3) |
+| Segurança | security-scanning (5), reverse-engineering (4) |
+
+> Fonte viva = plugin instalado (atualizável via `claude plugin`). Cópias aqui = backup.
+> Para uso real numa máquina nova, instalar os plugins (§8a) em vez de copiar estes arquivos.
