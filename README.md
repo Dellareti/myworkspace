@@ -2,7 +2,7 @@
 
 Meu repositório pessoal de ambiente Claude Code: plugins, MCPs, agentes, skills e links de ferramentas.
 
-## 📊 Inventário
+## Inventário
 
 | Categoria | Qtd | Onde | Replicação |
 |-----------|----:|------|------------|
@@ -16,7 +16,7 @@ Meu repositório pessoal de ambiente Claude Code: plugins, MCPs, agentes, skills
 
 **234 agentes+skills versionados** + plugins/MCPs reproduzíveis por comando (~20M total).
 
-## 🗂️ Estrutura
+## Estrutura
 
 ```
 myworkspace/
@@ -33,7 +33,7 @@ myworkspace/
     └── wshobson/<plugin>/<skill>/        # 79 skills do arsenal, por plugin
 ```
 
-## 🔗 Links (ferramentas)
+## Links (ferramentas)
 
 | Categoria | Arquivo | Descrição |
 |-----------|---------|-----------|
@@ -42,7 +42,7 @@ myworkspace/
 | Segurança & Info | [links/security.md](links/security.md) | IP, infra, tech stack, threat intel |
 | Agents / IA | [links/agents.md](links/agents.md) | Prontidão de sites para agentes de IA |
 
-## 🤖 Agentes & Skills
+## Agentes & Skills
 
 - [`agents/README.md`](agents/README.md) — catálogo de agentes (4 custom + 79 wshobson por domínio)
 - [`skills/README.md`](skills/README.md) — catálogo de skills (72 standalone + 79 wshobson por domínio)
@@ -54,7 +54,7 @@ ln -sf "$PWD"/agents/*.md ~/.claude/agents/
 for d in "$PWD"/skills/*/; do [ -f "$d/SKILL.md" ] && ln -sf "${d%/}" ~/.claude/skills/; done
 ```
 
-## ⚙️ Setup do ambiente
+## Setup do ambiente
 
 Ver [setup/claude-setup-manifest.md](setup/claude-setup-manifest.md) para reinstalar tudo numa
 máquina nova:
@@ -63,7 +63,3 @@ máquina nova:
 - **Arsenal** (§8): marketplace `claude-code-workflows` (24 plugins = 79 agentes + 79 skills) +
   72 skills standalone (Vercel/Anthropics/Glaucia/etc.)
 - **Gotchas** documentados (ex.: `known_marketplaces.json` vazio quebra `marketplace add`)
-
-> **Filosofia:** plugins/MCPs replicam por comando (atualizáveis); agentes/skills têm os arquivos
-> versionados aqui (backup/replicação offline). Para uso real do arsenal numa máquina nova, o
-> recomendado é reinstalar os plugins; o repo garante que você tem cópia completa de tudo.
