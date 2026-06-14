@@ -1,23 +1,39 @@
 # myworkspace
 
-Meu repositório pessoal de ambiente: plugins, MCPs, agentes, skills e links de ferramentas.
+Meu repositório pessoal de ambiente Claude Code: plugins, MCPs, agentes, skills e links de ferramentas.
 
-## Estrutura
+## 📊 Inventário
+
+| Categoria | Qtd | Onde | Replicação |
+|-----------|----:|------|------------|
+| Agentes customizados | 4 | [`agents/*.md`](agents/) | arquivos no repo |
+| Agentes wshobson | 79 | [`agents/wshobson/`](agents/wshobson/) | arquivos no repo (fonte viva = plugin) |
+| Skills standalone | 72 | [`skills/`](skills/) | arquivos no repo |
+| Skills wshobson | 79 | [`skills/wshobson/`](skills/wshobson/) | arquivos no repo (fonte viva = plugin) |
+| Plugins | 41 | [`setup/`](setup/claude-setup-manifest.md) §1-2, §8a | comandos `claude plugin install` |
+| MCPs | 21 | [`setup/`](setup/claude-setup-manifest.md) §3 | comandos `claude mcp add` |
+| Links de ferramentas | — | [`links/`](links/) | — |
+
+**234 agentes+skills versionados** + plugins/MCPs reproduzíveis por comando (~20M total).
+
+## 🗂️ Estrutura
 
 ```
 myworkspace/
-├── setup/          # Como reconstruir meu ambiente Claude Code
-│   └── claude-setup-manifest.md   # Plugins, MCPs, agentes, skills + comandos de instalação
-├── links/          # Ferramentas e serviços úteis, por categoria
-│   ├── seo.md
-│   ├── performance.md
-│   ├── security.md
-│   └── agents.md
-├── agents/         # Agentes customizados (defs .md) — adicionar conforme criar
-└── skills/         # Skills customizadas — adicionar conforme criar
+├── README.md                          # este índice
+├── setup/
+│   └── claude-setup-manifest.md        # tudo p/ reconstruir o ambiente (plugins, MCPs, arsenal)
+├── links/                              # ferramentas úteis por categoria
+│   ├── seo.md · performance.md · security.md · agents.md
+├── agents/
+│   ├── *.md                            # 4 customizados (autoria própria)
+│   └── wshobson/<plugin>/*.md           # 79 agentes do arsenal, por plugin
+└── skills/
+    ├── <skill>/SKILL.md                 # 72 standalone (custom + importadas)
+    └── wshobson/<plugin>/<skill>/        # 79 skills do arsenal, por plugin
 ```
 
-## Índice de links
+## 🔗 Links (ferramentas)
 
 | Categoria | Arquivo | Descrição |
 |-----------|---------|-----------|
@@ -26,13 +42,28 @@ myworkspace/
 | Segurança & Info | [links/security.md](links/security.md) | IP, infra, tech stack, threat intel |
 | Agents / IA | [links/agents.md](links/agents.md) | Prontidão de sites para agentes de IA |
 
-## Setup do ambiente
+## 🤖 Agentes & Skills
 
-Ver [setup/claude-setup-manifest.md](setup/claude-setup-manifest.md) para reinstalar todo o
-ambiente Claude Code numa máquina nova:
-- **Plugins** (17 base) + marketplaces
+- [`agents/README.md`](agents/README.md) — catálogo de agentes (4 custom + 79 wshobson por domínio)
+- [`skills/README.md`](skills/README.md) — catálogo de skills (72 standalone + 79 wshobson por domínio)
+
+Instalar numa máquina (global):
+```bash
+# agentes/skills customizados via symlink (repo = fonte de verdade)
+ln -sf "$PWD"/agents/*.md ~/.claude/agents/
+for d in "$PWD"/skills/*/; do [ -f "$d/SKILL.md" ] && ln -sf "${d%/}" ~/.claude/skills/; done
+```
+
+## ⚙️ Setup do ambiente
+
+Ver [setup/claude-setup-manifest.md](setup/claude-setup-manifest.md) para reinstalar tudo numa
+máquina nova:
+- **Plugins** (17 base + 24 do arsenal) + marketplaces
 - **MCPs** (21 globais: cloud, design, DB, devops, scraping, LLM)
-- **Arsenal** (seção 8): marketplace `claude-code-workflows` com 24 plugins curados
-  (**79 agentes + 79 skills**: arquitetura, backend, frontend, linguagens, devops, cloud,
-  segurança) + skills standalone (Vercel/Anthropics/Glaucia) e o gotcha do `known_marketplaces.json`.
-- **Agentes/skills customizados** deste repo (`agents/`, `skills/`)
+- **Arsenal** (§8): marketplace `claude-code-workflows` (24 plugins = 79 agentes + 79 skills) +
+  72 skills standalone (Vercel/Anthropics/Glaucia/etc.)
+- **Gotchas** documentados (ex.: `known_marketplaces.json` vazio quebra `marketplace add`)
+
+> **Filosofia:** plugins/MCPs replicam por comando (atualizáveis); agentes/skills têm os arquivos
+> versionados aqui (backup/replicação offline). Para uso real do arsenal numa máquina nova, o
+> recomendado é reinstalar os plugins; o repo garante que você tem cópia completa de tudo.
