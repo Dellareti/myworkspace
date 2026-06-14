@@ -6,8 +6,7 @@ Meu repositório pessoal de ambiente Claude Code: plugins, MCPs, agentes, skills
 
 | Categoria | Qtd | Onde | Replicação |
 |-----------|----:|------|------------|
-| Agentes customizados | 4 | [`agents/*.md`](agents/) | arquivos no repo |
-| Agentes wshobson | 79 | [`agents/wshobson/`](agents/wshobson/) | arquivos no repo (fonte viva = plugin) |
+| Agentes | 83 | [`agents/`](agents/) | arquivos no repo (4 custom + 79 do arsenal, prefixados) |
 | Skills | 147 | [`skills/`](skills/) | arquivos no repo |
 | Plugins | 41 | [`setup/`](setup/claude-setup-manifest.md) §1-2, §8a | comandos `claude plugin install` |
 | MCPs | 21 | [`setup/`](setup/claude-setup-manifest.md) §3 | comandos `claude mcp add` |
@@ -25,8 +24,7 @@ myworkspace/
 ├── links/                              # ferramentas úteis por categoria
 │   ├── seo.md · performance.md · security.md · agents.md
 ├── agents/
-│   ├── *.md                            # 4 customizados (autoria própria)
-│   └── wshobson/<plugin>/*.md           # 79 agentes do arsenal, por plugin
+│   └── *.md                            # 83 agentes flat (4 custom + 79 arsenal prefixados <plugin>-<agente>)
 └── skills/
     └── <skill>/SKILL.md                 # 147 skills (custom + importadas + arsenal), flat
 ```
@@ -42,7 +40,7 @@ myworkspace/
 
 ## Agentes & Skills
 
-- [`agents/README.md`](agents/README.md) — catálogo de agentes (4 custom + 79 wshobson por domínio)
+- [`agents/README.md`](agents/README.md) — catálogo de agentes (83: 4 custom + 79 arsenal, por domínio)
 - [`skills/README.md`](skills/README.md) — catálogo de skills (147, por domínio)
 
 Instalar numa máquina (global):

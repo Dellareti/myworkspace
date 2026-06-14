@@ -1,8 +1,13 @@
 # Agentes
 
-Subagentes do Claude Code (`.md` com frontmatter `name`/`description`).
+Catálogo flat de subagentes do Claude Code — **83 agentes**, cada um um `.md` com frontmatter
+`name`/`description`. Arquivos reais no repo. Nomes do arsenal são prefixados com o plugin de
+origem (`<plugin>-<agente>`) — assim o filename casa com o `name:` interno e não há colisão
+(vários plugins têm `security-auditor`, `code-reviewer`, etc., e cada variante é mantida).
 
-## Customizados (autoria própria) — raiz de `agents/`
+Lista exaustiva: `ls agents/`.
+
+## Customizados (autoria própria)
 | Agente | Quando usar |
 |--------|-------------|
 | [backend-api-reviewer](backend-api-reviewer.md) | Revisar design/implementação de endpoints REST/GraphQL |
@@ -10,36 +15,29 @@ Subagentes do Claude Code (`.md` com frontmatter `name`/`description`).
 | [infra-iac-reviewer](infra-iac-reviewer.md) | Revisar Terraform/K8s/Docker/CI: segurança, custo, confiabilidade |
 | [appsec-auditor](appsec-auditor.md) | Auditoria de segurança (OWASP) — uso defensivo |
 
-## Arsenal wshobson — `agents/wshobson/<plugin>/` (79 agentes)
-Vendorizados dos 24 plugins instalados do marketplace `claude-code-workflows`
-(ver `setup/claude-setup-manifest.md` §8a). Organizados por plugin para preservar proveniência
-e evitar colisão de nomes (vários plugins têm `performance-engineer`, `security-auditor`, etc.).
+## Arsenal wshobson (79, prefixados `<plugin>-<agente>`)
+Vêm dos 24 plugins do marketplace `claude-code-workflows` (ver `setup/claude-setup-manifest.md` §8a).
+Guia por domínio (prefixo = plugin de origem):
 
-| Domínio | Plugins (nº agentes) |
-|---------|----------------------|
-| Arquitetura | c4-architecture (4), full-stack-orchestration (4) |
-| Backend/API | backend-development (8), api-scaffolding (4), database-design (2), database-migrations (2), backend-api-security (2) |
-| Frontend | frontend-mobile-development (2), ui-design (3) |
-| Linguagens | python-development (3), javascript-typescript (2), systems-programming (4), jvm-languages (3) |
-| DevOps/Cloud | cloud-infrastructure (7), kubernetes-operations (1), cicd-automation (5), observability-monitoring (4), incident-response (6) |
-| Segurança | security-scanning (2), reverse-engineering (3) |
-| Qualidade/fluxo | comprehensive-review (3), tdd-workflows (2), debugging-toolkit (2), git-pr-workflows (1) |
+| Domínio | Prefixos de plugin |
+|---------|--------------------|
+| Arquitetura | c4-architecture-*, full-stack-orchestration-* |
+| Backend/API | backend-development-*, api-scaffolding-*, database-design-*, database-migrations-*, backend-api-security-* |
+| Frontend/UI | frontend-mobile-development-*, ui-design-* (e ex.: accessibility-expert) |
+| Linguagens | python-development-*, javascript-typescript-*, systems-programming-*, jvm-languages-* |
+| DevOps/Cloud | cloud-infrastructure-*, kubernetes-operations-*, cicd-automation-*, observability-monitoring-*, incident-response-* |
+| Segurança | security-scanning-*, reverse-engineering-* |
+| Qualidade/fluxo | comprehensive-review-*, tdd-workflows-*, debugging-toolkit-*, git-pr-workflows-* |
+
+> Variantes do "mesmo" agente em plugins diferentes (ex.: `security-auditor` aparece em 4) são
+> **mantidas separadas** porque o conteúdo difere por plugin. O prefixo as distingue.
 
 ## Como usar numa máquina
-
-**Customizados** (global):
+Customizados (global):
 ```bash
 mkdir -p ~/.claude/agents
 ln -sf "$PWD"/agents/*.md ~/.claude/agents/
 ```
-
-**Arsenal wshobson** — duas opções:
-- *Recomendado:* instalar os plugins (mantém atualizável) — ver `setup/claude-setup-manifest.md` §8a.
-- *Offline/backup:* copiar as defs vendorizadas:
-  ```bash
-  mkdir -p ~/.claude/agents
-  cp agents/wshobson/*/*.md ~/.claude/agents/
-  ```
-  (Cópia flat pode colidir nomes entre plugins; preferir a via plugin para uso real.)
-
-> Cópias aqui = backup/replicação. A fonte viva dos agentes wshobson é o plugin instalado.
+> Cópias do arsenal aqui = backup. A fonte viva dos agentes wshobson é o **plugin instalado**
+> (atualizável via `claude plugin update`); para uso real numa máquina nova, instalar os
+> plugins (§8a) em vez de copiar estes arquivos.
