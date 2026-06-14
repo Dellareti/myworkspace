@@ -8,13 +8,12 @@ Meu repositório pessoal de ambiente Claude Code: plugins, MCPs, agentes, skills
 |-----------|----:|------|------------|
 | Agentes customizados | 4 | [`agents/*.md`](agents/) | arquivos no repo |
 | Agentes wshobson | 79 | [`agents/wshobson/`](agents/wshobson/) | arquivos no repo (fonte viva = plugin) |
-| Skills standalone | 72 | [`skills/`](skills/) | arquivos no repo |
-| Skills wshobson | 79 | [`skills/wshobson/`](skills/wshobson/) | arquivos no repo (fonte viva = plugin) |
+| Skills | 147 | [`skills/`](skills/) | arquivos no repo |
 | Plugins | 41 | [`setup/`](setup/claude-setup-manifest.md) §1-2, §8a | comandos `claude plugin install` |
 | MCPs | 21 | [`setup/`](setup/claude-setup-manifest.md) §3 | comandos `claude mcp add` |
 | Links de ferramentas | — | [`links/`](links/) | — |
 
-**234 agentes+skills versionados** + plugins/MCPs reproduzíveis por comando (~20M total).
+**230 agentes+skills versionados** (83 agentes + 147 skills) + plugins/MCPs reproduzíveis por comando (~20M total).
 
 ## Estrutura
 
@@ -29,8 +28,7 @@ myworkspace/
 │   ├── *.md                            # 4 customizados (autoria própria)
 │   └── wshobson/<plugin>/*.md           # 79 agentes do arsenal, por plugin
 └── skills/
-    ├── <skill>/SKILL.md                 # 72 standalone (custom + importadas)
-    └── wshobson/<plugin>/<skill>/        # 79 skills do arsenal, por plugin
+    └── <skill>/SKILL.md                 # 147 skills (custom + importadas + arsenal), flat
 ```
 
 ## Links (ferramentas)
@@ -45,7 +43,7 @@ myworkspace/
 ## Agentes & Skills
 
 - [`agents/README.md`](agents/README.md) — catálogo de agentes (4 custom + 79 wshobson por domínio)
-- [`skills/README.md`](skills/README.md) — catálogo de skills (72 standalone + 79 wshobson por domínio)
+- [`skills/README.md`](skills/README.md) — catálogo de skills (147, por domínio)
 
 Instalar numa máquina (global):
 ```bash

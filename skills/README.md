@@ -1,12 +1,13 @@
 # Skills
 
-Catálogo de skills do Claude Code (cada uma numa pasta com `SKILL.md`).
-Arquivos reais versionados no repo (não só symlinks):
-- **72 skills standalone** (raiz de `skills/`) — custom + importadas via `npx skills`/clones
-- **79 skills do arsenal wshobson** em `skills/wshobson/<plugin>/` — vêm dos 24 plugins instalados
+Catálogo flat de skills do Claude Code — **147 skills**, cada uma numa pasta com `SKILL.md`.
+Arquivos reais versionados no repo (não só symlinks). Vêm de três origens, mas vivem juntas:
+custom (autoria própria), importadas via `npx skills`/clones, e as do arsenal `wshobson`
+(que também chegam pelos plugins — ver `setup/claude-setup-manifest.md` §8).
+
+Lista exaustiva: `ls skills/`.
 
 ## Como usar numa máquina
-Copiar/symlinkar todas pro Claude Code:
 ```bash
 mkdir -p ~/.claude/skills
 for d in "$PWD"/skills/*/; do ln -sf "${d%/}" ~/.claude/skills/; done
@@ -21,11 +22,12 @@ for d in "$PWD"/skills/*/; do ln -sf "${d%/}" ~/.claude/skills/; done
 | [stack-conventions](stack-conventions/SKILL.md) | Convenções do meu stack (preencher TODOs) |
 | [incident-debug](incident-debug/SKILL.md) | Debug de incidente: sintoma → causa raiz |
 
-## Importadas (arsenal — fontes na seção 8 do setup/)
-Agrupadas por domínio:
+## Importadas — guia por domínio
+(Amostra representativa; não exaustiva — há ~143 importadas no total.)
 
-- **Arquitetura/refactor:** improve-codebase-architecture, handoff, review-to-release-workflow,
-  implementation-readiness-gate, task-clarification-harness, implementation-contract-review-harness
+- **Arquitetura/refactor/planejamento:** improve-codebase-architecture, handoff,
+  review-to-release-workflow, implementation-readiness-gate, task-clarification-harness,
+  implementation-contract-review-harness, comprehensive-review-*
 - **Svelte/SvelteKit:** svelte-code-writer, svelte-core-bestpractices, svelte5-best-practices,
   sveltekit-structure, svelte, shadcn-svelte
 - **React/Next:** react, react-best-practices, react-components, composition-patterns,
@@ -37,33 +39,21 @@ Agrupadas por domínio:
   typescript-expert, typescript-pro, typescript-react-reviewer, nodejs-backend-patterns,
   nodejs-best-practices, fastify-best-practices
 - **Python:** python-performance-optimization, python-testing-patterns, fastapi-expert,
-  django-expert, django-security
+  django-expert, django-security (+ skills do plugin python-development)
 - **Go:** golang-pro, golang-patterns, golang-testing, golang-code-style
 - **Rust:** rust-best-practices, rust-mcp-server-generator, actix-web
 - **Ruby:** rails-expert
+- **Backend/DB/API:** skills dos plugins backend-development, api-scaffolding, database-design
+- **DevOps/Cloud:** skills dos plugins cloud-infrastructure, kubernetes-operations,
+  cicd-automation, observability-monitoring, incident-response
 - **Deploy/Vercel:** deploy-to-vercel, vercel-optimize
 - **QA/test/MCP:** webapp-testing, mcp-builder, code-review-analysis, agent-browser
 - **Segurança/infra:** security-best-practices, cybersecurity-analyst,
   anthropic-cybersecurity-skills (754 skills MITRE/NIST), secure-linux-web-hosting,
-  github-actions-docs
+  github-actions-docs, security-scanning-*, reverse-engineering-*
 - **Documentos:** pdf, docx, xlsx, pptx
 - **Descoberta:** find-skills
 
-> As importadas vieram via `npx skills add` / clones (ver `setup/claude-setup-manifest.md` §8).
-> Aqui ficam vendorizadas (cópia dos arquivos) para backup e replicação offline; para atualizar
-> à versão upstream, reinstalar pela fonte.
-
-## Skills do arsenal wshobson — `skills/wshobson/<plugin>/` (79 skills)
-Vêm dentro dos 24 plugins do marketplace `claude-code-workflows` (ver `setup/` §8a).
-Organizadas por plugin para preservar proveniência e evitar colisão de nomes.
-
-| Domínio | Plugins (nº skills) |
-|---------|---------------------|
-| Backend/API | backend-development (9), api-scaffolding (1), database-design (1) |
-| Frontend/UI | frontend-mobile-development (4), ui-design (9) |
-| Linguagens | python-development (16), javascript-typescript (4), systems-programming (3) |
-| DevOps/Cloud | cloud-infrastructure (8), kubernetes-operations (4), cicd-automation (4), observability-monitoring (4), incident-response (3) |
-| Segurança | security-scanning (5), reverse-engineering (4) |
-
-> Fonte viva = plugin instalado (atualizável via `claude plugin`). Cópias aqui = backup.
-> Para uso real numa máquina nova, instalar os plugins (§8a) em vez de copiar estes arquivos.
+> Os arquivos aqui são cópia (backup/replicação offline). Para as skills que vêm de plugins
+> (`wshobson`), a fonte viva é o plugin instalado — atualizável via `claude plugin update`.
+> Para reinstalar do upstream, ver `setup/claude-setup-manifest.md` §8.
